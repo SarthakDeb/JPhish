@@ -11,4 +11,5 @@ public interface CampaignService {
     List<Campaign> getCampaigns();
     Campaign getCampaignById(Long id);
     Campaign getCampaignByName(String name);
+
 }

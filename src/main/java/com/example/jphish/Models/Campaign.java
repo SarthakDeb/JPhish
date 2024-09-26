@@ -20,6 +20,9 @@ public class Campaign extends BaseModel{
     private String campaignDescription;
     private Time startTime;
     private Time endTime;
+    private String campaignTargetEmail;
+    private String campaignEmailSubject;
+    private String campaignEmailBody;
     @OneToOne
     private User targetUser;
 }
