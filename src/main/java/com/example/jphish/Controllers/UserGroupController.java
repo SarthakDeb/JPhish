@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/usergroup")
 public class UserGroupController {
@@ -24,5 +26,22 @@ public class UserGroupController {
         UserGroup newUserGroup = userGroupService.createGroupWithUsers(userGroupName, file);
 
         return new ResponseEntity<>(newUserGroup, HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<UserGroup>> groupAll(){
+        List<UserGroup> allGroups = userGroupService.allUserGroups();
+        return new ResponseEntity<>(allGroups, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public UserGroup getUserGroup(@PathVariable("id") Long userGroupId){
+        return userGroupService.findUserGroupById(userGroupId);
+    }
+
+    @PostMapping("/del/{id}")
+    public UserGroup deleteUserGroup(@PathVariable("id") Long userGroupId){
+        UserGroup deletedGroup = userGroupService.deleteUserGroupById(userGroupId);
+        return deletedGroup;
     }
 }

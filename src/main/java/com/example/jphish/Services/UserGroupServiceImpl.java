@@ -70,5 +70,20 @@ public class UserGroupServiceImpl implements UserGroupService {
         }
         return users;
     }
+
+    public List<UserGroup> allUserGroups() {
+        return userGroupRepository.findAll();
+    }
+
+    public UserGroup findUserGroupById(Long id) {
+        return userGroupRepository.findById(id).orElse(null);
+    }
+
+    public UserGroup deleteUserGroupById(Long id) {
+        UserGroup deletedUserGroup = findUserGroupById(id);
+        deletedUserGroup.setDeleted(true);
+        userGroupRepository.save(deletedUserGroup);
+        return deletedUserGroup;
+    }
 }
 

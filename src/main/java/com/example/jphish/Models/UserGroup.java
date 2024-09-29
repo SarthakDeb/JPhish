@@ -20,7 +20,7 @@ public class UserGroup extends BaseModel{
     private LocalDateTime createdAt;
 
     public UserGroup() {
-        this.users = new ArrayList<>(); // Ensures the list is always initialized
+        this.users = new ArrayList<>();
     }
 
 
